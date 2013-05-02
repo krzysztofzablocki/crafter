@@ -29,9 +29,9 @@ function processIcon() {
 }
 
 processIcon "Icon_base.png"
-processIcon "Icon_base@2x.png"
-processIcon "Icon_base~iPad.png"
-processIcon "Icon_base@2x~iPad.png"
+processIcon "Icon@2x_base.png"
+processIcon "Icon-72_base.png"
+processIcon "Icon-72@2x_base.png"
 ]
 
 
