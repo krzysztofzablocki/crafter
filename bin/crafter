@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+
+$:.push File.expand_path("../../lib", __FILE__)
+
+if ARGV[0] == 'reset'
+  puts 'reseting to default setup in ~/.crafter.rb'
+  root = File.expand_path('.', File.dirname(__FILE__))
+  FileUtils.cp("#{root}/../lib/config/default.rb", File.join(ENV['HOME'], '.crafter.rb'))
+  exit(0)
+end
+
+require 'crafter'
+Crafter::setup_project()
+puts 'Finished.'
