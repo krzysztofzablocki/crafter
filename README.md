@@ -1,4 +1,3 @@
-
 How do you setup your Cocoa projects? Do you always set same warnings, clone configurations and do bunch of other stuff? Or maybe you work in a big company and you are missing some standardised setup? 
 
 Programmers tend to automatise boring and repetitive tasks, yet I often see people spending time and time again configuring their Xcode Projects, even thought they always set it up same way. 
@@ -12,14 +11,16 @@ That's why I've created **crafter**, a ruby gem that you can install, setup your
 
 ### So how does it work?
 Install it by calling:
-{% codeblock lang:bash %}
+```
 gem install crafter
 crafter reset
-{% endcodeblock %}
+```
 this will create your personal configuration file at **~/.crafter.rb**
 
 now open that file with your favourite editor and you will see default configuration, along with description of different parts:
-{% codeblock lang:ruby %}
+
+
+```ruby
 load "#{Crafter::ROOT}/config/default_scripts.rb"
 
 # All your configuration should happen inside configure block
@@ -90,17 +91,17 @@ Crafter.configure do
     end
   end
 end
-{% endcodeblock %}
+```
 
 As you can see the configuration files is quite easy, yet is pretty flexible.
 Once you set it up as you see fit, go to your project folder (the one with xcodeproj, workspace etc.) and call:
 
-{% codeblock lang:bash %}
+```bash
 crafter
-{% endcodeblock %}
+```
 
 it will guide you through project setup, with default configuration it would look like this:
-{% codeblock lang:bash %}
+```bash
 1. sample
 2. sampleTests
 Which target should I use for default?
@@ -121,7 +122,7 @@ preparing git ignore
 preparing pod file
 adding scripts
 Finished.
-{% endcodeblock %}
+```
 
 Now your project should have all options applied, generated Podfile (call pod install or set it up in your configuration).
 
