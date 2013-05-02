@@ -11,21 +11,25 @@ version=`/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "${INFOPLIST_FILE}"`
 function processIcon() {
     export PATH=$PATH:/usr/local/bin
     base_file=$1
-    if [ ! -f $base_file ]; then return; fi
+    base_path=`find ${SRCROOT} -name $base_file`
+
+    if [[ ! -f ${base_path} || -z ${base_path} ]]; then
+        return;
+    fi
 
     target_file=`echo $base_file | sed "s/_base//"`
     target_path="${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/${target_file}"
 
     if [ $CONFIGURATION = "Release" ]; then
-        cp ${base_file} $target_path
-        return
+    cp ${base_file} $target_path
+    return
     fi
 
-    width=`identify -format %w ${base_file}`
+    width=`identify -format %w ${base_path}`
 
     convert -background '#0008' -fill white -gravity center -size ${width}x40\
-        caption:"${version} ${branch} ${commit}"\
-        ${base_file} +swap -gravity south -composite ${target_path}
+    caption:"${version} ${branch} ${commit}"\
+    ${base_path} +swap -gravity south -composite ${target_path}
 }
 
 processIcon "Icon_base.png"
