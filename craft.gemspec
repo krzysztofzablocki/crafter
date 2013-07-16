@@ -9,6 +9,7 @@ Gem::Specification.new do |gem|
   gem.description   = %q{CLI for setting up new Xcode projects. Inspired by thoughtbot liftoff.}
   gem.summary       = %q{Define your craft rules once, then apply it to all your Xcode projects.}
   gem.homepage      = 'https://github.com/krzysztofzablocki/crafter'
+  gem.license = 'MIT'
 
   gem.add_dependency 'xcodeproj', '~> 0.5.5'
   gem.add_dependency 'highline', '~> 1.6'
