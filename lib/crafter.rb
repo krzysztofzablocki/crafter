@@ -54,10 +54,15 @@ module Crafter
     @options = options
   end
 
+  def set_build_settings(build_settings)
+    @build_settings = build_settings
+  end
+
   def setup_project
     process_optional()
-    process_configurations() unless @configuration.empty?
-    process_options() unless @options.empty?
+    process_configurations() if @configuration unless @configuration.empty?
+    process_options() if @options unless @options.empty?
+    process_build_settings() if @build_settings unless @build_settings.empty? 
     process_git() if @add_git_ignore
     process_pods()
     process_scripts()
@@ -75,6 +80,11 @@ module Crafter
   def process_options
     puts 'setting up variety of options'
     self.project.enable_options(@options)
+  end
+
+  def process_build_settings
+    puts 'set specified values for build settings'
+    self.project.set_build_settings(@build_settings)
   end
 
   def process_git
