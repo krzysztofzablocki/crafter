@@ -52,6 +52,11 @@ Crafter.configure do
     GCC_TREAT_WARNINGS_AS_ERRORS
   )
 
+  # set non boolean options
+  set_build_settings ({
+    :'OTHER_CFLAGS' => '-Wall'
+  })
+
   # target specific options, :default is just a name for you, feel free to call it whatever you like
   with :default do
 
@@ -132,7 +137,7 @@ Send me your thoughts, I'm [merowing_ on twitter][7]
 
 #### Acknowledgements:
 
-[The App Business][1] (the company I work for) for supporting my idea and caring about work quality.
+[The App Business][1] (the company I worked for) for supporting my idea.
 
 to [@alloy][2], [@orta][3], [@romainbriche][4] - for taking some of their valuable time and sharing their thoughts about beta version.
 
