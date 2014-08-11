@@ -17,6 +17,15 @@ class ProjectHelper
     save_changes
   end
 
+  def set_build_settings(build_settings)
+    @project.build_configurations.each do |configuration|
+      build_settings.each do |key,value|
+        configuration.build_settings[key] = value
+      end
+    end
+    save_changes
+  end
+
   def add_shell_script(target, name, script)
     if target.shell_script_build_phases.to_a.index { |phase| phase.name == name }
       puts "Skipping adding \"#{name}\" script for target #{target} as it already exist"
