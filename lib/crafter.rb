@@ -60,9 +60,9 @@ module Crafter
 
   def setup_project
     process_optional()
-    process_configurations() if @configuration unless @configuration.empty?
-    process_options() if @options unless @options.empty?
-    process_build_settings() if @build_settings unless @build_settings.empty? 
+    process_configurations() if @configuration && !@configuration.empty?
+    process_options() if @options && !@options.empty?
+    process_build_settings() if @build_settings && !@build_settings.empty?
     process_git() if @add_git_ignore
     process_pods()
     process_scripts()
