@@ -19,8 +19,12 @@ class ProjectHelper
 
   def set_build_settings(build_settings)
     @project.build_configurations.each do |configuration|
-      build_settings.each do |key,value|
-        configuration.build_settings[key] = value
+      build_settings.each do |configuration_name, settings|
+        if configuration_name.to_s.downcase == "crafter_common" || configuration.name.downcase == configuration_name.to_s.downcase
+          settings.each do |key, value|
+            configuration.build_settings[key] = value
+          end
+        end
       end
     end
     save_changes

@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name          = 'crafter'
-  gem.version       = '0.1.39'
+  gem.version       = '0.1.4'
   gem.authors       = ['Krzysztof Zabłocki']
   gem.email         = ['merowing2@gmail.com']
   gem.description   = %q{CLI for setting up new Xcode projects. Inspired by thoughtbot liftoff.}

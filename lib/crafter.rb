@@ -17,6 +17,7 @@ module Crafter
   @targets = {}
   @add_git_ignore = false
   @platforms = []
+  @build_settings = {}
 
   def configure(&block)
     instance_eval &block
@@ -54,8 +55,8 @@ module Crafter
     @options = options
   end
 
-  def set_build_settings(build_settings)
-    @build_settings = build_settings
+  def set_build_settings(build_settings, configuration: 'crafter_common')
+    @build_settings[configuration] = build_settings
   end
 
   def setup_project
