@@ -33,24 +33,39 @@ Crafter.configure do
 
   # set of options, warnings, static analyser and anything else normal xcode treats as build options
   set_options %w(
-    GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED
-    GCC_WARN_MISSING_PARENTHESES
-    GCC_WARN_ABOUT_RETURN_TYPE
-    GCC_WARN_SIGN_COMPARE
-    GCC_WARN_CHECK_SWITCH_STATEMENTS
-    GCC_WARN_UNUSED_FUNCTION
-    GCC_WARN_UNUSED_LABEL
-    GCC_WARN_UNUSED_VALUE
-    GCC_WARN_UNUSED_VARIABLE
-    GCC_WARN_SHADOW
-    GCC_WARN_64_TO_32_BIT_CONVERSION
-    GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS
-    GCC_WARN_UNDECLARED_SELECTOR
-    GCC_WARN_TYPECHECK_CALLS_TO_PRINTF
-
-    RUN_CLANG_STATIC_ANALYZER
-    GCC_TREAT_WARNINGS_AS_ERRORS
-  )
+     RUN_CLANG_STATIC_ANALYZER
+     GCC_TREAT_WARNINGS_AS_ERRORS
+   )
+  
+  # set shared build settings
+  set_build_settings({
+    :'WARNING_CFLAGS' => %w(
+    -Weverything
+    -Wno-objc-missing-property-synthesis
+    -Wno-unused-macros
+    -Wno-disabled-macro-expansion
+    -Wno-gnu-statement-expression
+    -Wno-language-extension-token
+    -Wno-overriding-method-mismatch
+    ).join(" ")
+  })
+  
+  # and configuration specific ones
+  set_build_settings({
+    :'BUNDLE_ID_SUFFIX' => '.dev',
+    :'BUNDLE_DISPLAY_NAME_SUFFIX' => 'dev'
+  }, configuration: :debug)
+  
+  set_build_settings({
+    :'BUNDLE_ID_SUFFIX' => '.adhoc',
+    :'BUNDLE_DISPLAY_NAME_SUFFIX' => 'adhoc'
+  }, configuration: :adhoc)
+  
+  set_build_settings({
+    :'BUNDLE_ID_SUFFIX' => '',
+    :'BUNDLE_DISPLAY_NAME_SUFFIX' => ''
+  }, configuration: :release)
+    
 
   # set non boolean options
   set_build_settings ({
