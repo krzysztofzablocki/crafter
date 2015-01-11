@@ -33,6 +33,7 @@ GITIGNORE_CONTENTS = <<GITIGNORE
 *.perspectivev3
 *.pbxuser
 xcuserdata
+*.xccheckout
 
 # Build products
 build/
