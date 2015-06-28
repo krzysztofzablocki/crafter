@@ -119,7 +119,9 @@ module Crafter
     @targets.each { |_, v| v.process_scripts(self.project) }
   end
 
-  if File.exists?(File.join(ENV['HOME'], '.crafter.rb')) then
+  if File.exists?(File.join('./', 'crafter.rb')) then
+    load './crafter.rb'
+  elsif File.exists?(File.join(ENV['HOME'], '.crafter.rb')) then
     load '~/.crafter.rb'
   else
     load "#{Crafter::ROOT}/config/default.rb"
