@@ -18,6 +18,7 @@ module Crafter
   @add_git_ignore = false
   @platforms = []
   @build_settings = {}
+  @language_swift = false
 
   def configure(&block)
     instance_eval &block
@@ -59,6 +60,10 @@ module Crafter
     @build_settings[configuration] = build_settings
   end
 
+  def set_language_swift(is_swift)
+    @language_swift = is_swift
+  end
+
   def setup_project
     process_optional()
     process_configurations() if @configuration && !@configuration.empty?
@@ -97,6 +102,10 @@ module Crafter
     puts 'preparing pod file'
     File.open('Podfile', File::WRONLY|File::CREAT|File::EXCL) do |f|
 
+    if @language_swift
+      f.puts "use_frameworks!"
+    end
+    
       @platforms.each do |hash|
         name = hash[:platform]
         deployment = hash[:deployment]
