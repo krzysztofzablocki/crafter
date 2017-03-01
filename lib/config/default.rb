@@ -4,9 +4,9 @@ load "#{Crafter::ROOT}/config/default_scripts.rb"
 Crafter.configure do
 
   # This are projects wide instructions
-  add_platform({:platform => :ios, :deployment => 6.0})
+  add_platform({:platform => :ios, :deployment => 8.0})
   add_git_ignore
-  duplicate_configurations({:adhoc => :debug, :profiling => :debug})
+  duplicate_configurations({:Adhoc => :Release})
 
   # set of options, warnings, static analyser and anything else normal xcode treats as build options
   set_options %w(

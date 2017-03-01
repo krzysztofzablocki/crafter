@@ -5,7 +5,7 @@ class ProjectHelper
   PROJECTS = Dir.glob('*.xcodeproj')
 
   def initialize
-    @project = Xcodeproj::Project.new(xcode_project_file)
+    @project = Xcodeproj::Project.open(xcode_project_file)
   end
 
   def enable_options(options)
@@ -110,6 +110,6 @@ class ProjectHelper
   end
 
   def save_changes
-    @project.save_as xcode_project_file
+    @project.save xcode_project_file
   end
 end
