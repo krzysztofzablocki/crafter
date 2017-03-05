@@ -22,7 +22,7 @@ class ProjectHelper
       build_settings.each do |configuration_name, settings|
         if configuration_name.to_s.downcase == "crafter_common" || configuration.name.downcase == configuration_name.to_s.downcase
           settings.each do |key, value|
-            configuration.build_settings[key] = value
+            configuration.build_settings[key.to_s] = value
           end
         end
       end
